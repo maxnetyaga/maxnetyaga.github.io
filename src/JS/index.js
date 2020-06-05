@@ -1,10 +1,10 @@
 function orderNotes() {
   const vieww = parseInt(window.getComputedStyle(document.body).width);
   const notew = 310;
-  const newMargin = `${
-    ((vieww % notew) / (((vieww / notew) >> 0) + 1)) >> 0
-  }px`;
+  const numOfNotes = (vieww / notew) >> 0;
+  const newMargin = `${((vieww % notew) / (numOfNotes + 1)) >> 0}px`;
   const notes = [...document.querySelectorAll(".note")];
+  if (notes.length < numOfNotes) newMargin = "25px";
   notes.forEach((x) => {
     x.style.marginLeft = newMargin;
     x.style.marginBottom = newMargin;
